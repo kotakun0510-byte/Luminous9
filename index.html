@@ -1,0 +1,128 @@
+<!-- 
+  LUMINOUS 9
+  version: 1.0.0
+  updated: 2026-05-13
+  changes: ヒント機能・グレーアウト機能追加
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINOUS 9</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-logo">
+      <img src="images/logo.png" alt="LUMINOUS9ロゴ">
+      <span class="header-title">Luminous 9</span>
+    </div>
+    <div class="header-timer">
+      <img src="images/timer.png" alt="タイマーアイコン">
+      <span class="timer-display" id="timerDisplay">00 : 00</span>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ナンプレボード -->
+    <section class="board-wrap">
+      <div class="board" id="board"></div>
+      <div class="clear-area" id="clearArea">
+        <p class="clear-title">クリア！</p>
+        <p class="clear-time">タイム：<span id="clearTime">00:00</span></p>
+        <button class="btn btn-start" id="retryBtn">もう一度</button>
+      </div>
+    </section>
+
+    <!-- 右パネル -->
+    <aside class="panel">
+
+      <img src="images/flower_right.png" alt="" class="flower flower-right">
+
+      <!-- 難易度選択 -->
+      <div class="difficulty">
+        <label class="difficulty-item">
+          <input type="radio" name="difficulty" value="easy" checked>
+          <span>かんたん</span>
+        </label>
+        <label class="difficulty-item">
+          <input type="radio" name="difficulty" value="normal">
+          <span>ふつう</span>
+        </label>
+        <label class="difficulty-item">
+          <input type="radio" name="difficulty" value="hard">
+          <span>むずかしい</span>
+        </label>
+        <label class="difficulty-item">
+          <input type="radio" name="difficulty" value="expert">
+          <span>超難問</span>
+        </label>
+      </div>
+
+      <!-- START / 一時停止 / 消しゴム -->
+      <div class="btn-row">
+        <button class="btn btn-start" id="startBtn">START</button>
+        <button class="btn btn-pause" id="pauseBtn">⏸</button>
+        <button class="btn btn-eraser" id="eraserBtn">⌫</button>
+      </div>
+
+      <!-- 数字ボタン -->
+      <div class="numpad" id="numpad">
+        <button class="num-btn" data-num="1">1</button>
+        <button class="num-btn" data-num="2">2</button>
+        <button class="num-btn" data-num="3">3</button>
+        <button class="num-btn" data-num="4">4</button>
+        <button class="num-btn" data-num="5">5</button>
+        <button class="num-btn" data-num="6">6</button>
+        <button class="num-btn" data-num="7">7</button>
+        <button class="num-btn" data-num="8">8</button>
+        <button class="num-btn" data-num="9">9</button>
+      </div>
+
+      <!-- ヒントボタン -->
+      <div class="hint-row">
+        <button class="btn btn-hint" id="hintBtn">ヒント　<span id="hintCount"></span></button>
+      </div>
+
+      <img src="images/flower_left.png" alt="" class="flower flower-left">
+
+      <!-- 操作ガイド -->
+      <section class="guide">
+        <h2 class="guide-title">操作ガイド</h2>
+        <div class="guide-content">
+          <div class="guide-group">
+            <h3 class="guide-subtitle">マウス操作</h3>
+            <ul class="guide-list">
+              <li>入力　　：マスを選択し数字ボタンをクリック（同じ数字で上書き）</li>
+              <li>メモ　　：数字ボタンを長押しで候補数字を記入</li>
+              <li>消去　　：消しゴムボタンでマスをクリア</li>
+              <li>ヒント　：マスを選択しヒントボタンをクリック（3回まで）</li>
+              <li>スタート：クリックでゲーム開始 / 長押しで強制リセット</li>
+              <li>一時停止：クリックで中断（盤面を隠す）/ もう一度クリックで再開</li>
+            </ul>
+          </div>
+          <div class="guide-group">
+            <h3 class="guide-subtitle">キーボード操作</h3>
+            <ul class="guide-list">
+              <li>入力　　：数字キー 1〜9 で入力</li>
+              <li>消去　　：Delete キーでマスをクリア</li>
+              <li>一時停止：Esc キーで中断 / もう一度 Esc キーで再開</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </aside>
+  </main>
+
+  <script src="js/puzzles.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
