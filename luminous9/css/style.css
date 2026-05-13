@@ -1,0 +1,458 @@
+/* =============================
+  リセットCSS・基本設定
+============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #f5e6e8;
+  font-family: 'Cormorant Garamond', serif;
+  color: #8B4513;
+  min-width: 1440px;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =============================
+  ヘッダー
+============================== */
+
+.header {
+  width: 1440px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 0 136px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.header-title {
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #8B4513;
+}
+
+.header-timer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-timer img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.timer-display {
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #8B4513;
+}
+
+/* =============================
+  メインエリア
+============================== */
+
+.main {
+  width: 1440px;
+  margin: 120px auto 0;
+  padding: 0 136px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.board-wrap {
+  width: 675px;
+  flex-shrink: 0;
+}
+
+.panel {
+  width: 453px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding-top: 20px;
+  position: relative;
+}
+
+/* =============================
+  ゲーム盤面
+============================== */
+
+.board {
+  width: 675px;
+  height: 681px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  border: 4px solid #8B4513;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow:
+    4px 4px 8px rgba(180,130,140,0.3),
+    -2px -2px 6px rgba(255,255,255,0.8);
+  overflow: hidden;
+  position: relative;
+}
+
+.start-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(250, 243, 208, 0.85);
+  z-index: 10;
+}
+
+.start-title {
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 64px;
+  color: #8B4513;
+  letter-spacing: 0.1em;
+}
+
+.start-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: #a07860;
+  letter-spacing: 0.05em;
+}
+
+/* =============================
+  マス目
+============================== */
+
+.cell {
+  background-color: #faf3d0;
+  border: 1px solid #8B4513;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 28px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.cell:hover {
+  background-color: #f2e5b0;
+}
+
+.cell.border-right {
+  border-right: 4px solid #8B4513;
+}
+
+.cell.border-bottom {
+  border-bottom: 4px solid #8B4513;
+}
+
+.cell.selected {
+  background-color: #e8d5a3;
+}
+
+.cell.highlight {
+  background-color: #f2eccc;
+}
+
+.cell.preset {
+  color: #8B4513;
+  font-weight: 600;
+}
+
+.cell.user-input {
+  color: #4169e1 !important;
+  font-weight: 600 !important;
+}
+
+.cell.error {
+  background-color: #fde8e8;
+  color: #c0392b !important;
+  font-weight: 400;
+}
+
+/* =============================
+  メモ
+============================== */
+
+.memo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.memo-grid span {
+  font-size: 14px;
+  color: #a07860;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* =============================
+  クリア表示
+============================== */
+
+.clear-area {
+  display: none;
+  width: 675px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 80px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.clear-area.show {
+  display: flex;
+}
+
+/* =============================
+  難易度選択
+============================== */
+
+.difficulty {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+  width: 100%;
+}
+
+.difficulty-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 22px;
+  color: #8B4513;
+  cursor: pointer;
+}
+
+.difficulty-item input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* =============================
+  START・一時停止・消しゴムボタン
+============================== */
+
+.btn-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.btn {
+  flex: 1;
+  height: 52px;
+  border-radius: 16px;
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #8B4513;
+  cursor: pointer;
+  transition: transform 0.12s;
+  background: linear-gradient(145deg, #fdf0f2, #e8d0d4);
+  border: 1px solid #d4b0b8;
+  box-shadow:
+    4px 4px 8px rgba(180,130,140,0.3),
+    -2px -2px 6px rgba(255,255,255,0.8);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    2px 2px 4px rgba(180,130,140,0.3),
+    -1px -1px 3px rgba(255,255,255,0.8);
+}
+
+/* =============================
+  数字ボタン
+============================== */
+
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.num-btn {
+  width: 100%;
+  height: 62px;
+  border-radius: 16px;
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #8B4513;
+  cursor: pointer;
+  transition: transform 0.1s;
+  background: linear-gradient(145deg, #fdf0f2, #e8d0d4);
+  border: 1px solid #d4b0b8;
+  box-shadow:
+    4px 4px 8px rgba(180,130,140,0.3),
+    -2px -2px 6px rgba(255,255,255,0.8);
+}
+
+.num-btn.grayed-out {
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+.num-btn:hover {
+  transform: scale(1.05);
+}
+
+.num-btn:active {
+  transform: scale(0.95);
+  box-shadow:
+    2px 2px 4px rgba(180,130,140,0.3),
+    -1px -1px 3px rgba(255,255,255,0.8);
+}
+
+/* =============================
+  ヒントボタン
+============================== */
+
+.hint-row {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.btn-hint {
+  width: 100%;
+  height: 52px;
+}
+
+.btn-hint:disabled {
+  color: #bbb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* =============================
+  花の配置
+============================== */
+
+.flower {
+  position: absolute;
+  pointer-events: none;
+}
+
+.flower-right {
+  top: -20px;
+  right: -20px;
+  width: 120px;
+}
+
+.flower-left {
+  top: 365px;
+  left: -20px;
+  width: 120px;
+}
+
+/* =============================
+  操作ガイド
+============================== */
+
+.guide {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.guide-title {
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #8B4513;
+  margin-bottom: 12px;
+}
+
+.guide-subtitle {
+  font-family: 'Bodoni Moda SC', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8B4513;
+  margin-bottom: 8px;
+}
+
+.guide-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.guide-list li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: #8B4513;
+  line-height: 1.6;
+}
