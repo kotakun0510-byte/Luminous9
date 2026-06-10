@@ -120,6 +120,10 @@ img {
   position: relative;
 }
 
+.panel-controls {
+  display: contents;
+}
+
 /* =============================
   ゲーム盤面
 ============================== */
@@ -491,9 +495,14 @@ img {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --mobile-header: 60px;
+    --mobile-controls: 240px;
+  }
+
   .header {
-    padding: 12px 16px;
-    min-height: 64px;
+    padding: 10px 16px;
+    min-height: var(--mobile-header);
   }
 
   .header-logo {
@@ -505,93 +514,109 @@ img {
   }
 
   .main {
-    margin-top: 24px;
-    margin-bottom: 32px;
-    padding: 0 16px;
-    gap: 24px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding: 0 12px;
+    gap: 16px;
+    padding-bottom: calc(var(--mobile-controls) + env(safe-area-inset-bottom, 0px) + 12px);
   }
 
-  .board-wrap,
+  .board-wrap {
+    max-width: min(100%, calc(100dvh - var(--mobile-header) - var(--mobile-controls) - 24px));
+    margin: 0 auto;
+  }
+
+  .board {
+    width: 100%;
+    max-height: calc(100dvh - var(--mobile-header) - var(--mobile-controls) - 24px);
+    aspect-ratio: 1;
+  }
+
   .panel {
+    width: 100%;
     max-width: 100%;
+    padding-top: 0;
+    gap: 0;
+    align-items: stretch;
   }
 
-  .panel {
-    gap: 20px;
+  .panel-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to top, #f5e6e8 90%, rgba(245, 230, 232, 0.95));
+    box-shadow: 0 -4px 16px rgba(139, 69, 19, 0.1);
   }
 
   .difficulty {
-    gap: 10px 16px;
+    gap: 6px 12px;
   }
 
   .difficulty-item {
-    font-size: clamp(16px, 4vw, 22px);
+    font-size: 14px;
+  }
+
+  .difficulty-item input[type="radio"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .btn-row {
+    gap: 8px;
   }
 
   .btn {
-    height: 48px;
-    font-size: 16px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .numpad {
+    gap: 6px;
   }
 
   .num-btn {
-    height: 52px;
-    font-size: 20px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 10px;
   }
 
   .hint-row {
-    margin-top: 8px;
+    margin-top: 0;
+  }
+
+  .btn-hint {
+    height: 40px;
   }
 
   .flower-right,
   .flower-left {
-    width: 80px;
-    opacity: 0.85;
-  }
-
-  .flower-right {
-    top: -10px;
-    right: -8px;
-  }
-
-  .flower-left {
-    bottom: 80px;
-    left: -8px;
+    display: none;
   }
 
   .guide {
-    margin-top: 0;
+    margin-top: 8px;
+    padding-bottom: 16px;
   }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --mobile-controls: 228px;
+  }
+
   .header-title {
     font-size: 20px;
   }
 
   .timer-display {
     font-size: 20px;
-  }
-
-  .btn-row {
-    gap: 10px;
-  }
-
-  .numpad {
-    gap: 8px;
-  }
-
-  .num-btn {
-    height: 48px;
-    border-radius: 12px;
-  }
-
-  .btn {
-    border-radius: 12px;
-  }
-
-  .flower-right,
-  .flower-left {
-    width: 64px;
   }
 }
 
